@@ -1,5 +1,12 @@
 #!/usr/bin/env python
 
+"""
+Author: John D. Anderson
+Email: jander43@vols.utk.edu
+Description: Investing calculator for command line
+Usage: TODO
+"""
+
 
 # class
 class Investing(object):
@@ -17,7 +24,7 @@ class Investing(object):
         self._epr = 0.0011
         self._expense = 0.0
         self._netdiv = 0.0
-        self._statement = 'Year {0} total funds: {1}, total dividends: {2}, current dividends {3}, monthly dividends:{4}  total expense: {5}'
+        self._statement = 'Year {0:>3} | total funds: {1:>12.0f} | total dividends: {2:>6.0f} | current dividends {3:>6.0f}, monthly dividends:{4}  total expense: {5}'
 
     def calculate(self):
         # first shorten variables for temporary reasons
