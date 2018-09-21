@@ -5,3 +5,4 @@ Just a simple collection of "convenience" scripts made to be used from the comma
 * 1: Implement CLI for `investing.py`
 * 2: Implement clean and formatted printing for `investing.py`
 * 3: Implement meta-programming in _statment_ of Investing class
+* 4: Implement `_gen_column_padding` function
