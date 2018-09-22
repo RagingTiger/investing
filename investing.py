@@ -24,16 +24,28 @@ class Investing(object):
         self._statement = self._gen_statement()
 
     def _gen_column_padding(self):
-        # TODO
-        pass
+        # return dict of length data
+        return {'yl': len(str(self.data['years'])),
+                'fl': len(str(self.data['funds'])),
+                'al': len(str(self.data['apr'])),
+                'el': len(str(self.data['epr']))
+                }
 
     def _gen_statement(self):
-        # TODO
+        # get column temp/paddding
+        padtemp = '{{{}:>{}.0f}}'
+        pad = self._gen_column_padding()
+
+        # generate statement with correct padding
         statement = ('Year {0} | total funds: {1} | total '
                      'dividends: {2} | current dividends {3}, '
                      'monthly dividends:{4}  total expense: {5}'
-                     ).format('{0:>3}', '{1:>12.0f}', '{2:>6.0f}',
-                              '{3:>6.0f}', '{4:>6.0f}', '{5:>6.0f}'
+                     ).format('{0:>3}',
+                              padtemp.format('1', pad['fl']),
+                              '{2:>6.0f}',
+                              '{3:>6.0f}',
+                              '{4:>6.0f}',
+                              '{5:>6.0f}'
                               )
 
         return statement
