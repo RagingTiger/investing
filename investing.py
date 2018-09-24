@@ -24,11 +24,24 @@ class Investing(object):
         self._statement = self._gen_statement()
 
     def _gen_column_padding(self):
+        # make shorter reference (for ease of use)
+        data = self.data
+
+        # calculate lengths for each variable
+        years = len(str(data['years'])) + 1
+        totalfunds = years + len(str(data['funds']))
+        totaldiv = totalfunds
+        currentdiv = totaldiv - 2
+        monthlydiv = currentdiv
+        totalexp = monthlydiv
+
         # return dict of length data
-        return {'yl': len(str(self.data['years'])),
-                'fl': len(str(self.data['funds'])),
-                'al': len(str(self.data['apr'])),
-                'el': len(str(self.data['epr']))
+        return {'years': years,
+                'totalfunds': totalfunds,
+                'totaldiv': totaldiv,
+                'currentdiv': currentdiv,
+                'monthlydiv': monthlydiv,
+                'totalexp': totalexp
                 }
 
     def _gen_statement(self):
@@ -37,15 +50,16 @@ class Investing(object):
         pad = self._gen_column_padding()
 
         # generate statement with correct padding
-        statement = ('Year {0} | total funds: {1} | total '
-                     'dividends: {2} | current dividends {3}, '
-                     'monthly dividends:{4}  total expense: {5}'
-                     ).format('{0:>3}',
-                              padtemp.format('1', pad['fl']),
-                              '{2:>6.0f}',
-                              '{3:>6.0f}',
-                              '{4:>6.0f}',
-                              '{5:>6.0f}'
+        statement = ('Year {0} {6} total funds: {1} {6} total '
+                     'dividends: {2} {6} current dividends {3} {6} '
+                     'monthly dividends:{4} {6} total expense: {5}'
+                     ).format(padtemp.format('0', pad['years']),
+                              padtemp.format('1', pad['totalfunds']),
+                              padtemp.format('2', pad['totaldiv']),
+                              padtemp.format('3', pad['currentdiv']),
+                              padtemp.format('4', pad['monthlydiv']),
+                              padtemp.format('5', pad['totalexp']),
+                              '{}|{}'.format(3 * ' ', 3 * ' ')
                               )
 
         return statement
