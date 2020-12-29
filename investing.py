@@ -1,10 +1,7 @@
 #!/usr/bin/env python
 
 """
-Author: John D. Anderson
-Email: jander43@vols.utk.edu
 Description: Investing calculator for command line
-Usage: TODO
 """
 
 
@@ -80,8 +77,8 @@ class Investing(object):
             funds = funds + roi
             expense = expense + (funds * epr)
             netdiv = netdiv + roi
-            print self._statement.format(i + 1, funds, netdiv, roi, roi/12.0,
-                                         expense)
+            print(self._statement.format(i + 1, funds, netdiv, roi, roi/12.0,
+                                         expense))
 
     def _enterprise(self):
         # TODO
